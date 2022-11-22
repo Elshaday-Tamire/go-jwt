@@ -113,18 +113,14 @@ func Login(c *gin.Context) {
 			},
 		},
 		{
-			"accounts": []Dictionary{
-				{"account1": []Dictionary{
-					{"account no": "1000089352731", "balance": "10", "opening date": "30 JUN 2012", "product": "Saving Account", "stattment": []Dictionary{
-						{"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"},
-					}},
-				},
-					"account2": []Dictionary{
-						{"account no": "1000089352733", "balance": "10", "opening date": "", "product": "Saving Account", "stattment": []Dictionary{
-							{"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"},
-						}},
-					},
-				},
+
+			"accounts1": []Dictionary{
+				{"account no": "1000089352733", "balance": "10", "opening date": "", "product": "Saving Account", "statment": []Dictionary{
+					{"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"},
+				}},
+				{"account no": "1000089352733", "balance": "10", "opening date": "", "product": "Saving Account", "statment": []Dictionary{
+					{"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"},
+				}},
 			},
 		},
 	}
