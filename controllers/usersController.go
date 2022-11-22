@@ -109,7 +109,7 @@ func Login(c *gin.Context) {
 	data := []Dictionary{
 		{
 			"user": []Dictionary{
-				{"fullName": "REGASA ALEMU CHALI", "email": "abc@gmail.com", "photo": "http://10.1.245.150:7080/im.images/signatures/IM406389.jpg", "phone": "919584347", "address": "ADD ET"},
+				{"fullName": "REGASA ALEMU CHALI", "email": "abc@gmail.com", "photo": "http://10.1.245.150:7080/im.images/signatures/IM406389.jpg", "phone": "919584347", "address": "Addis Ababa, Ethiopia"},
 			},
 		},
 		{
