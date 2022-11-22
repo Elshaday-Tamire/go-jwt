@@ -109,23 +109,40 @@ func Login(c *gin.Context) {
 	data := []Dictionary{
 		{
 			"user": []Dictionary{
-				{"fullName": "REGASA ALAEMU CHALI", "email": "abc@gmail.com", "photo": "", "phone": ""},
+				{"fullName": "REGASA ALAEMU CHALI", "email": "abc@gmail.com", "photo": "http://10.1.245.150:7080/im.images/signatures/IM406389.jpg", "phone": "919584347"},
 			},
 		},
 		{
 			"accounts": []Dictionary{
 				{"account1": []Dictionary{
-					{"account no": "e768236543525", "balance": "10", "opening date": "", "product": ""},
-				}},
+					{"account no": "1000089352731", "balance": "10", "opening date": "30 JUN 2012", "product": "Saving Account", "stattment": []Dictionary{
+						{"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"},
+					}},
+				},
+					"account2": []Dictionary{
+						{"account no": "1000089352733", "balance": "10", "opening date": "", "product": "Saving Account", "stattment": []Dictionary{
+							{"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"},
+						}},
+					},
+				},
 			},
 		},
 	}
+	if user.Phonenumber == "919584347" {
+		c.JSON(http.StatusOK, gin.H{
+			"status":   "success",
+			"token":    tokenString,
+			"response": data,
+		})
+	}
+	if user.Phonenumber != "919584347" {
+		c.JSON(http.StatusOK, gin.H{
+			"status": "failure",
+			//"token":    tokenString,
+			"response": "no data found",
+		})
+	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"status":   "success",
-		"token":    tokenString,
-		"response": data,
-	})
 }
 
 func Validate(c *gin.Context) {
