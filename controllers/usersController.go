@@ -1,8 +1,12 @@
 package controllers
 
 import (
+	"bytes"
+	"encoding/json"
+	"fmt"
 	"go-jwt/initializers"
 	"go-jwt/models"
+	"io/ioutil"
 	"net/http"
 	"os"
 	"time"
@@ -15,8 +19,9 @@ import (
 func Signup(c *gin.Context) {
 
 	var body struct {
-		Username string
-		Password string
+		Username    string
+		Password    string
+		PhoneNumber string
 	}
 	if c.Bind(&body) != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -36,7 +41,7 @@ func Signup(c *gin.Context) {
 	}
 
 	// Create the user
-	user := models.User{Username: body.Username, Password: string(hash)}
+	user := models.User{Username: body.Username, Password: string(hash), Phonenumber: body.PhoneNumber}
 	result := initializers.DB.Create(&user)
 
 	if result.Error != nil {
@@ -104,9 +109,26 @@ func Login(c *gin.Context) {
 	//send it back
 	//c.SetSameSite(http.SameSiteLaxMode)
 	//c.SetCookie("Authorization", tokenString, 3600*24*30, "", "", false, true)
+	type Dictionary map[string]interface{}
+	data := []Dictionary{
+		{
+			"user": []Dictionary{
+				{"fullName": "REGASA ALAEMU CHALI", "email": "abc@gmail.com", "photo": "", "phone": ""},
+			},
+		},
+		{
+			"accounts": []Dictionary{
+				{"account1": []Dictionary{
+					{"account no": "e768236543525", "balance": "10", "opening date": "", "product": ""},
+				}},
+			},
+		},
+	}
+
 	c.JSON(http.StatusOK, gin.H{
-		"Token":  tokenString,
-		"status": "success",
+		"status":   "success",
+		"token":    tokenString,
+		"response": data,
 	})
 }
 
@@ -120,12 +142,59 @@ func Validate(c *gin.Context) {
 
 func CheckPhone(c *gin.Context) {
 	//read body
-	var body struct {
+	var reqbody struct {
 		Phonenumber string
 	}
-	c.Bind(&body)
-	//check for phone number
-	if body.Phonenumber != "919584347" {
+	c.Bind(&reqbody)
+	httpposturl := "http://10.1.245.150:7080/v1/cbo/"
+	var jsonData = []byte(fmt.Sprintf(`{
+		"CRM_PhoneRequest": {
+	  "ESBHeader": {
+		  "serviceCode": "790000",
+		  "channel": "USSD",
+		  "Service_name":"CRM_PhoneRequest",
+		  "Message_Id": "6255726662"
+	  },
+	  "WebRequestCommon": {
+		  "company": "",
+		  "password": "123456",
+		  "userName": "CRMUSER"
+	  },
+	  "CRMType": [
+		  {
+			  "columnName": "@ID",
+			  "criteriaValue": "%s",
+			  "operand": "EQ"
+		  }
+	  ]
+  }
+  }`, reqbody.Phonenumber))
+	request, error := http.NewRequest("POST", httpposturl, bytes.NewBuffer(jsonData))
+	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+	client := &http.Client{}
+	response, error := client.Do(request)
+	if error != nil {
+		panic(error)
+	}
+	defer response.Body.Close()
+
+	fmt.Println("response Status:", response.Status)
+	fmt.Println("response Headers:", response.Header)
+	// read response body
+
+	body, error := ioutil.ReadAll(response.Body)
+	x := map[string]string{}
+	json.Unmarshal(body, &x)
+	if error != nil {
+		fmt.Println(error)
+	}
+	// close response body
+	response.Body.Close()
+
+	// print response body
+	fmt.Println(x)
+
+	if reqbody.Phonenumber != "919584347" {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status": "error",
 			"error":  "Cutomer does not exist",
@@ -134,6 +203,7 @@ func CheckPhone(c *gin.Context) {
 	}
 	//respond
 	c.JSON(http.StatusOK, gin.H{
-		"status": "success",
+		"fullName": "REGASA ALEMU CHALI",
+		"status":   "success",
 	})
 }
