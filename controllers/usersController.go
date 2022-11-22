@@ -1,12 +1,8 @@
 package controllers
 
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
 	"go-jwt/initializers"
 	"go-jwt/models"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"time"
@@ -146,53 +142,53 @@ func CheckPhone(c *gin.Context) {
 		Phonenumber string
 	}
 	c.Bind(&reqbody)
-	httpposturl := "http://10.1.245.150:7080/v1/cbo/"
-	var jsonData = []byte(fmt.Sprintf(`{
-		"CRM_PhoneRequest": {
-	  "ESBHeader": {
-		  "serviceCode": "790000",
-		  "channel": "USSD",
-		  "Service_name":"CRM_PhoneRequest",
-		  "Message_Id": "6255726662"
-	  },
-	  "WebRequestCommon": {
-		  "company": "",
-		  "password": "123456",
-		  "userName": "CRMUSER"
-	  },
-	  "CRMType": [
-		  {
-			  "columnName": "@ID",
-			  "criteriaValue": "%s",
-			  "operand": "EQ"
-		  }
-	  ]
-  }
-  }`, reqbody.Phonenumber))
-	request, error := http.NewRequest("POST", httpposturl, bytes.NewBuffer(jsonData))
-	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
-	client := &http.Client{}
-	response, error := client.Do(request)
-	if error != nil {
-		panic(error)
-	}
-	defer response.Body.Close()
+	// 	httpposturl := "http://10.1.245.150:7080/v1/cbo/"
+	// 	var jsonData = []byte(fmt.Sprintf(`{
+	// 		"CRM_PhoneRequest": {
+	// 	  "ESBHeader": {
+	// 		  "serviceCode": "790000",
+	// 		  "channel": "USSD",
+	// 		  "Service_name":"CRM_PhoneRequest",
+	// 		  "Message_Id": "6255726662"
+	// 	  },
+	// 	  "WebRequestCommon": {
+	// 		  "company": "",
+	// 		  "password": "123456",
+	// 		  "userName": "CRMUSER"
+	// 	  },
+	// 	  "CRMType": [
+	// 		  {
+	// 			  "columnName": "@ID",
+	// 			  "criteriaValue": "%s",
+	// 			  "operand": "EQ"
+	// 		  }
+	// 	  ]
+	//   }
+	//   }`, reqbody.Phonenumber))
+	// 	request, error := http.NewRequest("POST", httpposturl, bytes.NewBuffer(jsonData))
+	// 	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
+	// 	client := &http.Client{}
+	// 	response, error := client.Do(request)
+	// 	if error != nil {
+	// 		panic(error)
+	// 	}
+	// 	defer response.Body.Close()
 
-	fmt.Println("response Status:", response.Status)
-	fmt.Println("response Headers:", response.Header)
-	// read response body
+	// 	fmt.Println("response Status:", response.Status)
+	// 	fmt.Println("response Headers:", response.Header)
+	// 	// read response body
 
-	body, error := ioutil.ReadAll(response.Body)
-	x := map[string]string{}
-	json.Unmarshal(body, &x)
-	if error != nil {
-		fmt.Println(error)
-	}
-	// close response body
-	response.Body.Close()
+	// 	body, error := ioutil.ReadAll(response.Body)
+	// 	x := map[string]string{}
+	// 	json.Unmarshal(body, &x)
+	// 	if error != nil {
+	// 		fmt.Println(error)
+	// 	}
+	// 	// close response body
+	// 	response.Body.Close()
 
-	// print response body
-	fmt.Println(x)
+	// 	// print response body
+	// 	fmt.Println(x)
 
 	if reqbody.Phonenumber != "919584347" {
 		c.JSON(http.StatusBadRequest, gin.H{
