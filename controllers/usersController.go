@@ -114,7 +114,7 @@ func Login(c *gin.Context) {
 		},
 		{
 
-			"accounts1": []Dictionary{
+			"accounts": []Dictionary{
 				{"account no": "1000089352733", "balance": "10", "opening date": "", "product": "Saving Account", "statment": []Dictionary{
 					{"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"}, {"TXNREF": "FT22181023T3\\BNK", "CRAMT": "0.00", "DRAMT": "0.00", "DATE": "30 JUN 2022", "DESC": "Transfer"},
 				}},
