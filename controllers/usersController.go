@@ -13,7 +13,7 @@ import (
 )
 
 func Signup(c *gin.Context) {
-	//Get the username/pass off req body
+
 	var body struct {
 		Username string
 		Password string
@@ -115,5 +115,25 @@ func Validate(c *gin.Context) {
 	//user.(models.User).Username
 	c.JSON(http.StatusOK, gin.H{
 		"message": user,
+	})
+}
+
+func CheckPhone(c *gin.Context) {
+	//read body
+	var body struct {
+		Phonenumber string
+	}
+	c.Bind(&body)
+	//check for phone number
+	if body.Phonenumber != "919584347" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status": "error",
+			"error":  "Cutomer does not exist",
+		})
+		return
+	}
+	//respond
+	c.JSON(http.StatusOK, gin.H{
+		"status": "success",
 	})
 }
